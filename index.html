@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Dynamics - PGCC IREPO Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url("depositphotos_141884154-stock-photo-hands-with-a-tablet-and.jpg") no-repeat center center fixed;
+            background-size: cover;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .left-image {
+            flex: 0 0 300px;
+            padding: 20px;
+        }
+
+        .left-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        header, nav, section, footer {
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+        }
+
+        nav ul.menu {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            padding: 0;
+            margin: 0;
+            background-color: #e6f0ff;
+        }
+
+        nav ul.menu li {
+            padding: 10px 20px;
+        }
+
+        nav ul.menu li a {
+            color: #004080;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul.menu li a:hover {
+            color: #ff6600;
+        }
+
+        section {
+            border-bottom: 1px solid #ccc;
+        }
+
+        h2 {
+            color: #004080;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input, form textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        form button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #ff6600;
+        }
+
+        footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            margin: 20px 0;
+            border: none;
+        }
+
+        .video-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .mood-buttons button {
+            margin: 10px;
+            padding: 15px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background-color: #3b6cd9;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .mood-buttons button:hover {
+            background-color: #2e5ac0;
+        }
+
+        .tip-box {
+            display: none;
+            margin-top: 30px;
+            font-size: 18px;
+            color: #333;
+            font-style: italic;
+        }
+
+        .translate-container,
+        .login.html {
+    text-align: center;
+    margin: 20px 0;
+}
+
+    </style>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" 
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+</head>
+
+<body>
+    <div class="translate-container">
+        <div id="google_translate_element"></div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Digital Dynamics</h1>
+            <p>Support through the IREPO Initiative</p>
+        </header>
+
+        <p><a href="login.html"><button>Login</button></a></p>
+
+        <nav aria-label="Main Navigation">
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="https://docs.google.com/document/d/1tKCJjSR0gARTogcsMIWNC5VB0AgxM679/edit" target="_blank">Proposal</a></li>
+                <li><a href="#problem">The Problem</a></li>
+                <li><a href="#solution">The Solution</a></li>
+                <li><a href="https://docs.google.com/document/d/1vCweb325CKZkjBT2ZHd-scr08VRyHYAQ/edit" target="_blank">Employee Handbook</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <section id="home">
+            <h2>Home</h2>
+            <p>Welcome to Digital Dynamics, a PGCC student-centered tech community project as part of the IREPO Design Challenge. We aim to enhance student support through innovative and resilient education solutions.</p>
+        </section>
+
+        <section id="problem">
+            <h2>The Problem</h2>
+            <span style='font-size:50px;'>&#128173;</span>
+            <p>The COVID-19 pandemic disrupted traditional education models. PGCC students faced increased stress, equity gaps, and challenges adapting to hybrid learning environments. These issues call for responsive and inclusive digital solutions.</p>
+        </section>
+
+        <section id="mood-tips">
+            <h2>How Are You Feeling?</h2>
+            <div class="mood-buttons">
+                <button onclick="showTip('happy')">Happy</button>
+                <button onclick="showTip('sad')">Sad</button>
+                <button onclick="showTip('anxious')">Anxious</button>
+                <button onclick="showTip('tired')">Tired</button>
+            </div>
+            <div id="tip" class="tip-box"></div>
+        </section>
+
+        
+        <script>
+            console.log("script.js is connected");
+
+            function showTip(mood) {
+                let tip = "";
+
+                switch (mood) {
+                    case 'happy':
+                        tip = "Keep spreading that positive energy today!";
+                        break;
+                    case 'sad':
+                        tip = "You're not alone. Try journaling or reaching out to someone you trust.";
+                        break;
+                    case 'anxious':
+                        tip = "Try a deep breathing exercise - inhale 4 sec, hold 7, exhale 8.";
+                        break;
+                    case 'tired':
+                        tip = "Rest is productive. Give yourself time to recharge.";
+                        break;
+                    default:
+                        tip = "Take a moment to breathe and be kind to yourself.";
+                }
+
+                const tipBox = document.getElementById('tip');
+                tipBox.innerText = tip;
+                tipBox.style.display = 'block';  
+            }
+        </script>
+
+        <section id="solution">
+            <h2>The Solution</h2>
+            <p><a href="https://docs.google.com/forms/d/e/1FAIpQLScsW6MPpQr8S9gRFMdkRC72zqPbD6xRNIBEyKMUqF8VHCq0mQ/viewform" target="_blank"><button>Scheduled Remote Counseling Sessions</button></a></p>
+            <p><a href="https://pgcc.libguides.com/mlc/brainfuse" target="_blank"><button>Free Online Tutoring</button></a></p>
+            <p><a href="task manager.html" target="_blank"><button>Task Manager Application</button></a></p>
+        </section>
+
+        <section id="extras">
+            <h1>Study Tips and Stress Awareness</h1>
+            <div class="video-container">
+                <div>
+                    <h2>Study Tips</h2>
+                    <iframe src="https://www.youtube.com/embed/Bk2-dKH2Ta4" allowfullscreen></iframe>
+                </div>
+                <div>
+                    <h2>Managing Stress at College</h2>
+                    <iframe src="https://www.youtube.com/embed/l_9PchV6PIc" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form onsubmit="handleFormSubmit(event)">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+
+                <button type="submit">Send</button>
+            </form>
+
+            <script>
+                function handleFormSubmit(event) {
+                    event.preventDefault();
+                    alert('Form submitted!');
+                }
+            </script>
+
+            <p>Email: support@pgcc.edu</p>
+            <p><a href="https://www.pgcc.edu" target="_blank">PGCC Support Departments</a></p>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Digital Dynamics. All rights reserved.</p>
+            <p>This is an accessible web page.</p>
+            <p>
+                We are committed to protecting your privacy. Learn more about 
+                <a href="https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/securityrule/security101.pdf" target="_blank" rel="noopener noreferrer">
+                    HIPAA compliance
+                </a>.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
