@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    #task-form {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    #task-input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+    }
+    #add-task {
+      padding: 10px 15px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #fff;
+      padding: 10px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      border-left: 5px solid #4caf50;
+      align-items: center;
+    }
+    li.completed {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+    .actions button {
+      margin-left: 5px;
+      cursor: pointer;
+      padding: 5px 8px;
+      border: none;
+      background: #ddd;
+    }
+    .actions button:hover {
+      background: #bbb;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📝 Task Manager</h2>
+
+  <div id="task-form">
+    <input type="text" id="task-input" placeholder="Enter a new task..." />
+    <button id="add-task">Add</button>
+  </div>
+
+  <ul id="task-list"></ul>
+
+  <script>
+    const addTaskBtn = document.getElementById('add-task');
+    const taskInput = document.getElementById('task-input');
+    const taskList = document.getElementById('task-list');
+
+    addTaskBtn.addEventListener('click', () => {
+      const taskText = taskInput.value.trim();
+      if (taskText !== '') {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <span>${taskText}</span>
+          <div class="actions">
+            <button onclick="completeTask(this)">✔️</button>
+            <button onclick="deleteTask(this)">🗑️</button>
+          </div>
+        `;
+        taskList.appendChild(li);
+        taskInput.value = '';
+      }
+    });
+
+    function completeTask(button) {
+      const li = button.closest('li');
+      li.classList.toggle('completed');
+    }
+
+    function deleteTask(button) {
+      const li = button.closest('li');
+      li.remove();
+    }
+
+    // Allow Enter key to add task
+    taskInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        addTaskBtn.click();
+      }
+    });
+  </script>
+
+</body>
+</html>
