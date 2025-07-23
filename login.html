@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Digital Dynamics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: url("depositphotos_141884154-stock-photo-hands-with-a-tablet-and.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        .login-container img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #004080;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .login-container p {
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .login-container a {
+            color: #004080;
+            text-decoration: none;
+        }
+
+        .login-container a:hover {
+            color: #ff6600;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form onsubmit="return validateLogin(event)">
+            <input type="text" id="username" placeholder="Username" required><br>
+            <input type="password" id="password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+            <div class="error" id="error-message"></div>
+        </form>
+        <p><a href="index.html">Back to home</a></p>
+
+    </div>
+
+    <script>
+        function validateLogin(event) {
+            event.preventDefault(); 
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errorDiv = document.getElementById("error-message");
+
+            // Example hardcoded credentials
+            const validUsername = "student";
+            const validPassword = "pgcc123";
+
+            if (username === validUsername && password === validPassword) {
+                // Redirect to homepage on success
+                window.location.href = "index.html";
+            } else {
+                errorDiv.textContent = "Invalid username or password.";
+            }
+
+            return false;
+        }
+    </script>
+
+</body>
+</html>
